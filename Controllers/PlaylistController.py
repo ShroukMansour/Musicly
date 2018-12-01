@@ -10,4 +10,5 @@ class PlaylistController():
         self.playlist.addPlaylist()
 
     def getAllPlaylists(self):
-        return self.sqlite.getAllPlaylists()
+        s = sqlite.sqlite()
+        return s.getAllPlaylists()

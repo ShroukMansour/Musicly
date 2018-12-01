@@ -1,5 +1,6 @@
 import numpy as np
 from Controllers import  SongController as  sc
+from Controllers import  PlaylistController as  pc
 from Models import Playlist, Song, Album, Artist, Band
 class Musicly():
     def __init__(self):
@@ -7,12 +8,10 @@ class Musicly():
         self.band =  np.array
         self.playlists = np.array(Playlist)
         self.songs = np.array(Song)
-        # self.playlistController = PlaylistController.PlaylistController()
-        # self.songController = sc()
 
 
     def viewPlaylists(self):
-        playlists =  self.playlistController.getAllPlaylists()
+        playlists =  pc.PlaylistController.getAllPlaylists(pc)
         for pl in playlists:
             print(pl.getName())
             print("     tracks: " + pl.getTracks())
@@ -23,5 +22,5 @@ class Musicly():
             print(s)
 
 my = Musicly()
-my.viewSongs()
+my.viewPlaylists()
 

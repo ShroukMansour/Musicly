@@ -8,7 +8,8 @@ import vlc
 class songController():
 
     def getAllSongs(self):
-        return sqlite.sqlite.getAllSongs(self)
+        s = sqlite.sqlite()
+        return s.getAllSongs()
 
     def playSong(self, songPath):
         # directory = "C:/Users/Aya Essam/Desktop/MusiclyMusic"
@@ -26,6 +27,7 @@ class songController():
         # time.sleep(10)
     def stopmusic(self):
         pygame.mixer.music.stop()
+#
 # try:
 # sc = songController()
 # sc.playSong("")
