@@ -1,4 +1,4 @@
 class Band:
-    def __init__(self, artists, songs):
-        self.artists = artists
-        self.songs = songs
+    def __init__(self, name):
+        self.songs = None
+        self.name = name

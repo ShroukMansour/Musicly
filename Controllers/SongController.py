@@ -1,15 +1,18 @@
-import pygame
-from SqliteDB import sqlite
+#import pygame
 from Models import Song
 import os
 from tkinter import *
 import time
-import vlc
+#import vlc
+
 class songController():
 
     def getAllSongs(self):
-        s = sqlite.sqlite()
-        return s.getAllSongs()
+        return self.db.getAllSongs()
+
+    def get_desc(self, id):
+        song = self.db.get_song(id)
+        return song # song info concatenated
 
     def playSong(self, songPath):
         # directory = "C:/Users/Aya Essam/Desktop/MusiclyMusic"
@@ -22,11 +25,13 @@ class songController():
         #     print("Playing...")
         #     pygame.time.Clock().tick(1000)
         # pygame.event.wait()
-        p = vlc.MediaPlayer("C:/Users/Aya Essam/Desktop/MusiclyMusic/038.mp3")
-        p.play()
+        #p = vlc.MediaPlayer("C:/Users/Aya Essam/Desktop/MusiclyMusic/038.mp3")
+        #p.play()
         # time.sleep(10)
+        pass
     def stopmusic(self):
-        pygame.mixer.music.stop()
+        #pygame.mixer.music.stop()
+        pass
 #
 # try:
 # sc = songController()
