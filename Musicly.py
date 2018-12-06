@@ -67,10 +67,72 @@ class Musicly():
         pc = PlaylistController()
         pc.add_playlist(name, desc)
 
-    def add_song_to_playlist(self, playlist_id):
-        pc = PlaylistController()
-        pc.add_playlist(name, desc)
+    def add_song_to_playlist(self):
+        sc = SongController()
+        playlist_id = 2
+        song_details = ["shrouk", 'band', 'data', 'sad','lyrics', '50', 'E:\\Quran\\falq.mp3',
+                       1, playlist_id, 1  ] # see if artist_id num or name
+        sc.add_song_to_playlist(song_details)
 
+    def add_artist(self):
+        ac = ArtistController()
+        artist_details = ['shrouk', '10/12', 1]
+        ac.add_artist(artist_details)
+
+    def add_album(self):
+        ac = AlbumController()
+        album_details = ['shrouk', 1]
+        ac.add_album(album_details)
+
+    def remove_song_from_playlist(self):
+        sc = SongController()
+        song_id = 3
+        sc.remove_song_from_playlist(song_id)
+
+    def delete_playlist(self):
+        pc = PlaylistController()
+        playlist_id = 3
+        pc.delete_playlist(playlist_id)
+
+    def delete_song(self):
+        sc = SongController()
+        song_id = 3
+        sc.remove_song_from_playlist(song_id)
+
+    def delete_album(self):
+        ac = AlbumController()
+        album_id = 2
+        ac.delete_album(album_id)
+
+    def delete_artist(self):
+        ac = ArtistController()
+        artist_id = 3
+        ac.delete_artist(artist_id)
+
+    def sort_by_name(self):
+        sc = SongController()
+        songs = sc.sort_by_name()
+        return songs
+
+    def sort_by_album(self):
+        sc = SongController()
+        songs = sc.sort_by_album()
+        return songs
+
+    def sort_by_artist(self):
+        sc = SongController()
+        songs = sc.sort_by_artist()
+        return songs
+
+    def sort_by_release_date(self):
+        sc = SongController()
+        songs = sc.sort_by_release_date()
+        return songs
+
+    def sort_by_genre(self):
+        sc = SongController()
+        songs = sc.sort_by_genre()
+        return songs
 
 
 my = Musicly()
@@ -79,4 +141,13 @@ my = Musicly()
 # my.view_albums()
 # my.view_albums()
 # print(my.get_playlist_details(2))
-my.play_band_songs(1)
+# my.play_band_songs(1)
+# my.add_song_to_playlist()
+# my.add_artist()
+# my.add_album()
+# my.remove_song_from_playlist()
+# my.delete_playlist()
+# my.delete_song()
+#my.delete_album()
+# my.delete_artist()
+# print(my.sort_by_album())

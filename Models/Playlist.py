@@ -51,3 +51,8 @@ class Playlist():
         self.con.commit()
         self.con.close()
         return playlists
+
+    def delete_playlist(self, playlist_id):
+        self.c.execute("DELETE FROM playlist where id=?", (playlist_id,))
+        self.con.commit()
+        self.con.close()

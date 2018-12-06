@@ -6,9 +6,6 @@ class AlbumController():
         self.sqlite = sqlite()
         self.album = Album()
 
-    def add_album(self):
-        self.album.add_album()
-
     def get_all_albums(self):
         return self.album.get_all_albums()
 
@@ -19,3 +16,9 @@ class AlbumController():
     def get_album_name(self, id):
         x = self.get_album(id)
         return x[1]
+
+    def add_album(self, album_details):
+        self.album.add_album(album_details)
+
+    def delete_album(self, album_id):
+        self.album.delete_album(album_id)

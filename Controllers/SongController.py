@@ -76,6 +76,33 @@ class SongController():
     def stopmusic(self):
         pygame.mixer.music.stop()
 
+    def sort_by_name(self):
+        songs = self.song.sort_by_name()
+        return songs
+
+    def sort_by_genre(self):
+        songs = self.song.sort_by_genre()
+        return songs
+
+    def sort_by_release_date(self):
+        songs = self.song.sort_by_release_date()
+        return songs
+
+    def sort_by_artist(self):
+        songs = self.song.sort_by_artist()
+        return songs
+
+    def sort_by_album(self):
+        songs = self.song.sort_by_album()
+        return songs
+
+    def add_song_to_playlist(self, song_details):
+        self.song.add_song_to_playlist(song_details)
+        return True
+
+    def remove_song_from_playlist(self, song_id):
+        self.song.remove_song(song_id)
+
 #
 # sc = SongController()
 # sc.playSong("E:/Quran/fatha.mp3")
