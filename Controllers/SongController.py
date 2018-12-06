@@ -1,9 +1,12 @@
 import pygame
+from Controllers.AlbumController import AlbumController
+from Controllers.ArtistController import ArtistController
+from Controllers.BandController import BandController
 from Models.Song import Song
 import os
 from tkinter import *
 import time
-im port vlc
+import vlc
 
 class SongController():
 

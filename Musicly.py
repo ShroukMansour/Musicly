@@ -6,11 +6,6 @@ from Controllers.ArtistController import ArtistController
 from Models.Playlist import Playlist
 from Models.Song import Song
 from Models.Album import Album
-from Models.Artist import Artist
-from Models.Band import Band
-
-
-
 
 class Musicly():
     def __init__(self):
@@ -52,5 +47,5 @@ class Musicly():
 
 my = Musicly()
 # my.viewPlaylists()
-# my.viewSongs()
-my.view_albums()
+my.viewSongs()
+# my.view_albums()

@@ -13,7 +13,7 @@ class Song():
         self.lyrics = lyrics
         self.length = length
         self.path = path
-        self.con = sqlite3.connect('E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db')
+        self.con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
         self.c = self.con.cursor()
 
 

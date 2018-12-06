@@ -5,6 +5,14 @@ from Models.Song import Song
 
 
 class Playlist:
+    def __init__(self):
+        self.name = ""
+        self.songs = []
+        self.description = ""
+        self.tracks = 0
+        self.con = sqlite3.connect('E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db')
+        self.c = self.con.cursor()
+
     def __init__(self, name, description):
         self.playlist = Playlist()
         self.name = name
