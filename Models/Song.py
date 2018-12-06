@@ -3,7 +3,7 @@ import sqlite3
 from SqliteDB.sqlite import sqlite
 
 class Song():
-    con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
+    con = sqlite3.connect("E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db")
     c = con.cursor()
     def __init__(self, name="", Band=None, releaseDate="", genres="", lyrics="", length=0, artist_id="", album_id="", path=""):
         self.name = name
