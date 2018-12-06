@@ -23,6 +23,7 @@ class SongController():
         return song # song info concatenated
 
     def get_full_desc(self, id):
+        x = 1 # just for testing
         song = self.song.get_song(id)
         bandcont = BandController()
         band_name = bandcont.get_band_name(song[7]) ################## band id in song
