@@ -4,8 +4,8 @@ class ArtistController():
     def __init__(self):
         self.artist = Artist()
 
-    def add_artist(self):
-        self.artist.add_artist()
+    def add_artist(self, artist_details):
+        self.artist.add_artist(artist_details)
 
     def get_all_artist(self):
         return self.artist.get_all_artist()
@@ -23,3 +23,6 @@ class ArtistController():
     def get_artist_name(self, id):
         artist = self.get_artist(id)
         return artist[1]
+
+    def delete_artist(self, artist_id):
+        self.artist.delete_artist(artist_id)

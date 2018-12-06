@@ -4,7 +4,7 @@ from SqliteDB.sqlite import sqlite
 
 class PlaylistController():
     def __init__(self):
-        self.sqlite = sqlite()
+        self.playlist = Playlist()
 
     def add_playlist(self, name, desc):
         self.playlist.add_playlist(name, desc)
@@ -18,3 +18,6 @@ class PlaylistController():
         sc = SongController()
         songs_names , songs_duration=  sc.get_playlist_songs_names_duration(id)
         return [playlist[1], playlist[1], songs_names, songs_duration]
+
+    def delete_playlist(self, playlist_id):
+        self.playlist.delete_playlist(playlist_id)

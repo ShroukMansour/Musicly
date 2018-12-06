@@ -3,7 +3,7 @@ from Models.Song import Song
 
 class Playlist():
 
-    con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
+    con = sqlite3.connect("E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db")
     c = con.cursor()
 
     def __init__(self, name="", description=""):
@@ -51,3 +51,8 @@ class Playlist():
         self.con.commit()
         self.con.close()
         return playlists
+
+    def delete_playlist(self, playlist_id):
+        self.c.execute("DELETE FROM playlist where id=?", (playlist_id,))
+        self.con.commit()
+        self.con.close()

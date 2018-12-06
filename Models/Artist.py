@@ -3,16 +3,20 @@ import sqlite3
 from SqliteDB.sqlite import sqlite
 
 class Artist():
-    def __init__(self, name, dateOfBirth):
+    con = sqlite3.connect("E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db")
+    c = con.cursor()
+
+    def __init__(self, name="", dateOfBirth=""):
         self.name = name
         self.dateOfBirth = dateOfBirth
         self.songs = None
-        self.con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
-        self.c = self.con.cursor()
-        self.sqlite = sqlite()
 
-    def add_artist(self, name, dob):
-        sqlite.add_artist(name, dob)
+    def add_artist(self, artist):
+        self.c.execute(
+            "INSERT INTO artist (name, dob, band_id) VALUES (?, ?, ?)", (artist[0], artist[1], artist[1]))
+        self.con.commit()
+        self.con.close()
+        return True
 
 
     def get_all_artists(self):
@@ -28,3 +32,8 @@ class Artist():
         self.con.commit()
         self.con.close()
         return x
+
+    def delete_artist(self, artist_id):
+        self.c.execute("DELETE FROM artist where id=?", (artist_id,))
+        self.con.commit()
+        self.con.close()

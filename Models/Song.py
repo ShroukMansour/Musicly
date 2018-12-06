@@ -3,7 +3,7 @@ import sqlite3
 from SqliteDB.sqlite import sqlite
 
 class Song():
-    con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
+    con = sqlite3.connect("E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db")
     c = con.cursor()
     def __init__(self, name="", Band=None, releaseDate="", genres="", lyrics="", length=0, artist_id="", album_id="", path=""):
         self.name = name
@@ -58,9 +58,9 @@ class Song():
         self.con.close()
         return songs
 
-    def add_song_to_playlist(self, playlist_id, song):
-        self.c.execute("INSERT INTO song VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)",
-                       (str(song[0]), str(song[1]), str(song[2]), str(song[3]), str(song[4]),
+    def add_song_to_playlist(self, song):
+        self.c.execute("INSERT INTO song (name,band,release_date,genres,lyrics,length,path,artist_id,playlist_id,album_id) VALUES  (?, ?, ?, ?,?, ?, ?, ?, ?,?)",
+                       (str(song[0]),str(song[1]), str(song[2]), str(song[3]), str(song[4]),
                         str(song[5]), str(song[6]), str(song[7]), str(song[8]), str(song[9])))
         self.con.commit()
         self.con.close()
@@ -71,3 +71,8 @@ class Song():
         self.con.commit()
         self.con.close()
         return songs
+
+    def remove_song(self, song_id):
+        self.c.execute("DELETE FROM song where id=?", (song_id,))
+        self.con.commit()
+        self.con.close()
