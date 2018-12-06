@@ -10,6 +10,17 @@ class Artist:
     def add_artist(self, name, dob):
         sqlite.add_artist(name, dob)
 
-    def get_all_artist(self):
-        return sqlite.get_all_artists()
 
+    def get_all_artists(self):
+        self.c.execute("SELECT * FROM artists")
+        artists = self.c.fetchall()
+        self.con.commit()
+        self.con.close()
+        return artists
+
+    def get_artist(self, id):
+        self.c.execute("SELECT * FROM artist where id=?", id)
+        x = self.c.fetchone()
+        self.con.commit()
+        self.con.close()
+        return x

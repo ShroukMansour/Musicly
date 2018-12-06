@@ -18,7 +18,19 @@ class Song():
 
 
     def get_song(self, id):
-        return self.db.get_song(id)
+        self.c.execute("SELECT * FROM song where id=?", id)
+        song = self.c.fetchone()
+        self.con.commit()
+        self.con.close()
+        return song
+
+    def get_playlist_songs(self, id):
+        self.c.execute("SELECT * FROM song where playlist_id=?", id)
+        songs = self.c.fetchall()
+        self.con.commit()
+        self.con.close()
+        return songs
+
 
     def add_song_to_playlist(self, playlist_id, song):
         self.c.execute("INSERT INTO song VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?)",

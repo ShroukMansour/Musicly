@@ -6,12 +6,7 @@ class sqlite():
         self.con = sqlite3.connect('E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db')
         self.c = self.con.cursor()
 
-    def getAllPlaylists(self):
-        self.c.execute("SELECT * FROM playlist")
-        playlists = self.c.fetchall()
-        self.con.commit()
-        self.con.close()
-        return playlists
+
 
     def getAllSongs(self):
         self.c.execute("SELECT * FROM song")
@@ -27,19 +22,7 @@ class sqlite():
         self.con.close()
         return song
 
-    def get_all_albums(self):
-        self.c.execute("SELECT * FROM albums")
-        albums = self.c.fetchall()
-        self.con.commit()
-        self.con.close()
-        return albums
 
-    def get_all_artists(self):
-        self.c.execute("SELECT * FROM artists")
-        artists = self.c.fetchall()
-        self.con.commit()
-        self.con.close()
-        return artists
 
     def addSongToSongs(self, path, name, band):
         self.c.execute(

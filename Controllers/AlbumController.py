@@ -10,5 +10,12 @@ class AlbumController():
         self.album.add_album()
 
     def get_all_albums(self):
-        s = sqlite()
-        return s.get_all_albums()
+        return self.album.get_all_albums()
+
+
+    def get_album(self, id):
+        return self.artist.get_artist(id)
+
+    def get_album_name(self, id):
+        x = self.get_album(id)
+        return x[1]

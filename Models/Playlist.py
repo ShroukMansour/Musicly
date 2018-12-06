@@ -6,6 +6,7 @@ from Models.Song import Song
 
 class Playlist:
     def __init__(self, name, description):
+        self.playlist = Playlist()
         self.name = name
         self.songs = []
         self.description = description
@@ -39,7 +40,16 @@ class Playlist:
         self.con.commit()
         self.con.close()
 
-    def get_playlist_details(self, id):
-        return [self.name, self.description, self.songs]
+    def get_playlist(self, id):
+        self.c.execute("SELECT * FROM playlist where id=?", id)
+        x = self.c.fetchone()
+        self.con.commit()
+        self.con.close()
+        return x
 
-
+    def getAllPlaylists(self):
+        self.c.execute("SELECT * FROM playlist")
+        playlists = self.c.fetchall()
+        self.con.commit()
+        self.con.close()
+        return playlists

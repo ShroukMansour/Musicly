@@ -1,11 +1,19 @@
 #import pygame
-from Models import Song
+import sqlite3
+
+from Controllers.AlbumController import AlbumController
+from Controllers.ArtistController import ArtistController
+from Controllers.BandController import BandController
+from Models.Song import Song
 import os
 from tkinter import *
 import time
 #import vlc
 
-class songController():
+class SongController():
+
+    def __init__(self):
+        self.song = Song()
 
     def getAllSongs(self):
         return self.db.getAllSongs()
@@ -13,6 +21,30 @@ class songController():
     def get_desc(self, id):
         song = self.db.get_song(id)
         return song # song info concatenated
+
+    def get_full_desc(self, id):
+        song = self.song.get_song(id)
+        bandcont = BandController()
+        band_name = bandcont.get_band_name(song[7]) ################## band id in song
+        ac = ArtistController()
+        artist_name = ac.get_artist_name(song[8])  ################## artisr id in song
+        abc = AlbumController()
+        album_name = abc.get_album_name(song[9])  ################## artisr id in song
+        return [song[1], artist_name, band_name, album_name, song[5], song[6]]##############
+
+    def get_playlist_songs_names_duration(self, id):
+        songs = self.get_playlist_songs(id)
+        songs_names = []
+        songs_duration = []
+        for song in songs:
+            songs_names.append(song[1])
+            songs_duration.append(song["duration"])
+        return  songs_names, songs_duration
+
+
+    def get_playlist_songs(self, playlist_id):
+        songs = self.song.get_playlist_songs(id)
+        return songs
 
     def playSong(self, songPath):
         # directory = "C:/Users/Aya Essam/Desktop/MusiclyMusic"
