@@ -1,10 +1,14 @@
+import sqlite3
+
 from SqliteDB.sqlite import sqlite
 
-class Artist:
+class Artist():
     def __init__(self, name, dateOfBirth):
         self.name = name
         self.dateOfBirth = dateOfBirth
         self.songs = None
+        self.con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
+        self.c = self.con.cursor()
         self.sqlite = sqlite()
 
     def add_artist(self, name, dob):

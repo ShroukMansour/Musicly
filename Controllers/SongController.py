@@ -9,15 +9,17 @@ import time
 import vlc
 
 class SongController():
+    def __init__(self):
+        self.song = Song()
 
-    def getAllSongs(self):
-        return self.getAllSongs()
+    def get_all_songs(self):
+        return Song.get_all_songs(Song)
 
     def get_desc(self, id):
         song = self.db.get_song(id)
         return song # song info concatenated
 
-    def playSong(self, song_path="E:/Quran/fatha.mp3"):
+    def playSong(self, song_path="C:\\Users\\Aya Essam\\Desktop\\MusiclyMusic\\013.mp3"):
         pygame.init()
         pygame.display.set_mode((1,1))
         pygame.mixer.music.load(song_path)
@@ -27,6 +29,26 @@ class SongController():
         while pygame.mixer.music.get_busy():
             pygame.event.poll()
             clock.tick(10)
+
+    def play_band_songs(self, band_id):
+        band_songs = self.song.get_band_songs(band_id)
+        for song in band_songs:
+            self.playSong(song[7])
+
+    def play_genres_songs(self, genres):
+        songs = self.song.get_genres_songs(genres)
+        for song in songs:
+            self.playSong(song[7])
+
+    def play_album_songs(self, album_id):
+        songs = self.song.get_album_songs(album_id)
+        for song in songs:
+            self.playSong(song[7])
+
+    def play_artist_songs(self, artist_id):
+        songs = self.song.get_artist_songs(artist_id)
+        for song in songs:
+            self.playSong(song[7])
 
     def get_full_desc(self, id):
         song = self.song.get_song(id)
@@ -51,27 +73,12 @@ class SongController():
         songs = self.song.get_playlist_songs(id)
         return songs
 
-    def playSong(self, songPath):
-        # directory = "C:/Users/Aya Essam/Desktop/MusiclyMusic"
-        # os.chdir(directory)
-        # pygame.init()
-        # pygame.mixer.init()
-        # pygame.mixer.music.load("038.mp3")
-        # pygame.mixer.music.play()
-        # while pygame.mixer.music.get_busy():
-        #     print("Playing...")
-        #     pygame.time.Clock().tick(1000)
-        # pygame.event.wait()
-        #p = vlc.MediaPlayer("C:/Users/Aya Essam/Desktop/MusiclyMusic/038.mp3")
-        #p.play()
-        # time.sleep(10)
-        pass
     def stopmusic(self):
         pygame.mixer.music.stop()
 
-
-sc = SongController()
-sc.playSong("E:/Quran/fatha.mp3")
+#
+# sc = SongController()
+# sc.playSong("E:/Quran/fatha.mp3")
 
 # import os
 #
@@ -93,7 +100,7 @@ sc.playSong("E:/Quran/fatha.mp3")
 #
 # index = 0
 #
-# def directorychooser():
+# def play_group_of_songs(self, songs_list):
 #
 #     directory = askdirectory()
 #     os.chdir(directory)

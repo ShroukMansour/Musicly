@@ -1,26 +1,16 @@
 import sqlite3
 from Models.Song import Song
-import numpy as np
-from Models.Song import Song
 
+class Playlist():
 
-class Playlist:
-    def __init__(self):
-        self.name = ""
-        self.songs = []
-        self.description = ""
-        self.tracks = 0
-        self.con = sqlite3.connect('E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db')
-        self.c = self.con.cursor()
+    con = sqlite3.connect("C:\\Users\\Aya Essam\\anaconda3\\MusiclyNew\\Musicly\\SqliteDB\\musicly_new.db")
+    c = con.cursor()
 
-    def __init__(self, name, description):
-        self.playlist = Playlist()
+    def __init__(self, name="", description=""):
         self.name = name
         self.songs = []
         self.description = description
         self.tracks = 0
-        self.con = sqlite3.connect('E:\FCI\Fourth year\Concepts\Assignments\Musicly\SqliteDB\musicly_new.db')
-        self.c = self.con.cursor()
 
     def getName(self):
         return self.name
@@ -49,13 +39,13 @@ class Playlist:
         self.con.close()
 
     def get_playlist(self, id):
-        self.c.execute("SELECT * FROM playlist where id=?", id)
+        self.c.execute("SELECT * FROM playlist where id=?", (str(id),))
         x = self.c.fetchone()
         self.con.commit()
         self.con.close()
         return x
 
-    def getAllPlaylists(self):
+    def get_all_playlists(self):
         self.c.execute("SELECT * FROM playlist")
         playlists = self.c.fetchall()
         self.con.commit()

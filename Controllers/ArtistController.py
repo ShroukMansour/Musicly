@@ -14,7 +14,7 @@ class ArtistController():
         artists_list = self.get_all_artist()
         artists_names = []
         for artist in artists_list:
-            artists_names.append(artist[1]) # name location
+            artists_names.append(artist[1])
         return artists_names
 
     def get_artist(self, id):
