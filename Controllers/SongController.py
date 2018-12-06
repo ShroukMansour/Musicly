@@ -1,11 +1,11 @@
-#import pygame
-from Models import Song
+import pygame
+from Models.Song import Song
 import os
 from tkinter import *
 import time
-#import vlc
+import vlc
 
-class songController():
+class SongController():
 
     def getAllSongs(self):
         return self.db.getAllSongs()
@@ -14,37 +14,27 @@ class songController():
         song = self.db.get_song(id)
         return song # song info concatenated
 
-    def playSong(self, songPath):
-        # directory = "C:/Users/Aya Essam/Desktop/MusiclyMusic"
-        # os.chdir(directory)
-        # pygame.init()
-        # pygame.mixer.init()
-        # pygame.mixer.music.load("038.mp3")
-        # pygame.mixer.music.play()
-        # while pygame.mixer.music.get_busy():
-        #     print("Playing...")
-        #     pygame.time.Clock().tick(1000)
-        # pygame.event.wait()
-        #p = vlc.MediaPlayer("C:/Users/Aya Essam/Desktop/MusiclyMusic/038.mp3")
-        #p.play()
-        # time.sleep(10)
-        pass
-    def stopmusic(self):
-        #pygame.mixer.music.stop()
-        pass
-#
-# try:
-# sc = songController()
-# sc.playSong("")
-# # except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
-# #     sc.stopmusic()
-# #     print("\nPlay Stopped by user")
-# # except Exception:
-# #     print("unknown error")
-#
-# print("Done")
-# import os
+    def playSong(self, song_path="E:/Quran/fatha.mp3"):
+        pygame.init()
+        pygame.display.set_mode((1,1))
+        pygame.mixer.music.load(song_path)
+        pygame.mixer.music.play(1)
+        clock = pygame.time.Clock()
+        clock.tick(10)
+        while pygame.mixer.music.get_busy():
+            pygame.event.poll()
+            clock.tick(10)
 
+
+    def stopmusic(self):
+        pygame.mixer.music.stop()
+
+
+sc = SongController()
+sc.playSong("E:/Quran/fatha.mp3")
+
+# import os
+#
 # from tkinter.filedialog import askdirectory
 #
 # import pygame
